@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tom Thorsén — Portfolio</title>
+  <meta name="description" content="Tatuerare → IT & Cybersäkerhet. Mini‑projekt, labbar, script och design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0b; --card:#141414; --muted:#9aa0a6; --txt:#e9e9e9; --accent:#e11d48; /* crimson */
+      --ok:#22c55e; --warn:#f59e0b; --ring:rgba(225,29,72,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Ubuntu,Cantarell,"Noto Sans",sans-serif; background:radial-gradient(1200px 700px at 80% -10%,rgba(225,29,72,.08),transparent), var(--bg); color:var(--txt);}
+    a{color:var(--txt); text-decoration:none}
+    a:hover{color:#fff}
+    .container{max-width:1100px; margin:0 auto; padding:28px 18px 64px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0 22px; position:sticky; top:0; backdrop-filter:saturate(1.1) blur(8px); background:linear-gradient(180deg,rgba(11,11,11,.9),rgba(11,11,11,.6) 60%,transparent); z-index:10}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:36px;height:36px;border-radius:10px; background:conic-gradient(from 210deg at 50% 50%, var(--accent), #7f1d1d, #111); box-shadow:0 0 0 2px rgba(255,255,255,.04), 0 10px 30px -10px var(--ring)}
+    .title{font-weight:800; letter-spacing:.2px}
+    .tagline{color:var(--muted); font-size:.95rem}
+    nav{display:flex; gap:14px; flex-wrap:wrap}
+    nav a{padding:8px 12px; border-radius:10px; background:#121212; border:1px solid #1e1e1e}
+    nav a:hover{border-color:#2a2a2a}
+
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:20px; align-items:center; margin:14px 0 20px}
+    .hero .card{padding:22px}
+
+    .card{background:linear-gradient(180deg,#121212,#0f0f0f); border:1px solid #1c1c1c; border-radius:16px; box-shadow:0 12px 30px -20px rgba(0,0,0,.7)}
+    .card h2{margin:0 0 8px}
+    .muted{color:var(--muted)}
+
+    .controls{display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 0}
+    .input, .chip{background:#101010; border:1px solid #1c1c1c; color:var(--txt); border-radius:12px; padding:10px 12px}
+    .input{min-width:220px}
+    .chip{display:inline-flex; align-items:center; gap:8px; cursor:pointer}
+    .chip[data-active="true"]{border-color:var(--accent); box-shadow:0 0 0 3px var(--ring)}
+
+    .grid{display:grid; grid-template-columns:repeat(1,minmax(0,1fr)); gap:16px; margin-top:18px}
+    @media(min-width:740px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(min-width:1020px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+    .project{display:flex; flex-direction:column; gap:10px; padding:16px}
+    .project h3{margin:0; font-size:1.06rem}
+    .project p{margin:0; color:var(--muted); line-height:1.4}
+
+    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+    .tag{font-size:.78rem; padding:6px 8px; border:1px solid #212121; background:#0d0d0d; border-radius:999px}
+
+    .links{display:flex; gap:10px; margin-top:8px; flex-wrap:wrap}
+    .btn{padding:9px 12px; border-radius:12px; border:1px solid #2a2a2a; background:#111}
+    .btn.primary{border-color:var(--accent); color:#fff}
+    .btn:hover{border-color:#3a3a3a}
+
+    footer{margin-top:40px; color:var(--muted); text-align:center}
+    code.inline{background:#101010; padding:2px 6px; border-radius:6px; border:1px solid #1c1c1c}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="title">Tom Thorsén</div>
+          <div class="tagline">Tattoo → IT & Cybersäkerhet</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#work">Projekt</a>
+        <a href="#about">Om</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h2>Hej! 👋</h2>
+        <p class="muted">Jag skiftar från 15+ år som tatuerare till IT- & cybersäkerhet. Min portfolio visar korta, väl dokumenterade mini‑projekt: nätverkslabbar, script och säkerhetsövningar – plus lite design.</p>
+        <div class="controls">
+          <input class="input" id="q" placeholder="Sök projekt (t.ex. VLAN, Python)" />
+          <button class="chip" data-filter="all" data-active="true">Alla</button>
+          <button class="chip" data-filter="CyberSec">CyberSec</button>
+          <button class="chip" data-filter="Networking">Networking</button>
+          <button class="chip" data-filter="Python">Python</button>
+          <button class="chip" data-filter="Design">Design</button>
+        </div>
+      </div>
+      <div class="card" id="about">
+        <h2>Om mig</h2>
+        <p class="muted">YH-student (CS25) på Frans Schartaus Handelsinstitut. Avklarat: Informationssäkerhet (VG), Kommunikation (VG). Cert: ISC2 CC. Jag gillar labbar, dokumentation och snygga lösningar.</p>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="contact" class="card" style="margin-top:18px; padding:18px;">
+      <h2>Kontakt</h2>
+      <p class="muted">GitHub: <a href="https://github.com/twtct80" target="_blank" rel="noreferrer">twtct80</a> · LinkedIn: <a href="https://www.linkedin.com/in/tom-thors%C3%A9n-387026" target="_blank" rel="noreferrer">Tom Thorsén</a></p>
+    </section>
+
+    <footer>
+      <p>🛠 Lägg till projekt längst ned i filen (JSON‑blocket) — inga layoutändringar behövs. Du kan senare flytta datat till <code class="inline">projects.json</code> och fetcha.</p>
+    </footer>
+  </div>
+
+  <!-- 📦 Projektdata: lägg till ett nytt objekt i arrayen så dyker projektet upp automatiskt. -->
+  <script type="application/json" id="projects-data">[
+    {
+      "title":"Packet Tracer — VLAN & Router‑on‑a‑Stick",
+      "summary":"Byggde VLAN 10/20/30, trunkar, subinterfaces och DHCP pools. Dokumenterade felsökning (Native VLAN mismatch, DHCP fail)",
+      "tags":["CyberSec","Networking"],
+      "links":[
+        {"label":"Repo","href":"https://github.com/twtct80/pt-vlan-lab"},
+        {"label":"PDF","href":"#"}
+      ]
+    },
+    {
+      "title":"TryHackMe — Progress & Lärdomar",
+      "summary":"Sammanställning av rum (ex. Blue, Kioptrix). Fokus: metodik, anteckningar, vad jag lärde mig, förbättringar.",
+      "tags":["CyberSec"],
+      "links":[
+        {"label":"Notebook","href":"#"}
+      ]
+    },
+    {
+      "title":"Python — Mini Portscanner",
+      "summary":"Litet CLI‑verktyg (socket, argparse, concurrency) + säkerhetsnotis om ansvarsfull användning.",
+      "tags":["Python","CyberSec"],
+      "links":[
+        {"label":"Repo","href":"https://github.com/twtct80/py-portscan"}
+      ]
+    },
+    {
+      "title":"Design — GitHub Pages Dark Refresh",
+      "summary":"Mörkt tema, typografi, grid. Dokumenterade designval och tillgänglighet.",
+      "tags":["Design"],
+      "links":[
+        {"label":"Live","href":"https://twtct80.github.io"}
+      ]
+    }
+  ]</script>
+
+  <script>
+    const state = { q:'', filter:'all' };
+    const $grid = document.getElementById('grid');
+    const $q = document.getElementById('q');
+
+    function getProjects(){
+      try{ return JSON.parse(document.getElementById('projects-data').textContent || '[]'); }
+      catch(e){ console.error('JSON parse error', e); return []; }
+    }
+
+    function matches(p){
+      const text = (p.title + ' ' + p.summary + ' ' + (p.tags||[]).join(' ')).toLowerCase();
+      const qOk = !state.q || text.includes(state.q);
+      const fOk = state.filter==='all' || (p.tags||[]).includes(state.filter);
+      return qOk && fOk;
+    }
+
+    function tagEl(t){
+      const s = document.createElement('span');
+      s.className='tag'; s.textContent=t; return s;
+    }
+
+    function linkBtn(l){
+      const a = document.createElement('a');
+      a.className='btn';
+      if(/^(live|repo)$/i.test(l.label)) a.classList.add('primary');
+      a.href=l.href; a.target='_blank'; a.rel='noreferrer'; a.textContent=l.label; return a;
+    }
+
+    function render(){
+      const items = getProjects().filter(matches);
+      $grid.innerHTML = '';
+      if(!items.length){
+        const empty = document.createElement('div');
+        empty.className='card project';
+        empty.innerHTML = '<h3>Inget hittat</h3><p class="muted">Justera sökningen eller välj en annan tagg.</p>';
+        $grid.appendChild(empty); return;
+      }
+      for(const p of items){
+        const card = document.createElement('article');
+        card.className='card project';
+        const h3 = document.createElement('h3'); h3.textContent=p.title; card.appendChild(h3);
+        const s = document.createElement('p'); s.textContent=p.summary; card.appendChild(s);
+        const tags = document.createElement('div'); tags.className='tags'; (p.tags||[]).forEach(t=>tags.appendChild(tagEl(t))); card.appendChild(tags);
+        if(p.links?.length){ const links = document.createElement('div'); links.className='links'; p.links.forEach(l=>links.appendChild(linkBtn(l))); card.appendChild(links); }
+        $grid.appendChild(card);
+      }
+    }
+
+    // interactions
+    document.querySelectorAll('.chip').forEach(ch=>{
+      ch.addEventListener('click',()=>{
+        document.querySelectorAll('.chip').forEach(x=>x.dataset.active='false');
+        ch.dataset.active='true';
+        state.filter = ch.dataset.filter;
+        render();
+      });
+    });
+
+    $q.addEventListener('input', (e)=>{ state.q = e.target.value.trim().toLowerCase(); render(); });
+
+    // init
+    render();
+  </script>
+</body>
+</html>
