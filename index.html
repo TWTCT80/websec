@@ -56,6 +56,20 @@
   .hero{margin:14px 0 20px}
   .hero .card{padding:22px}
 
+  /* Endast projektskorten i griden */
+  .card.project{
+    background: #270202; 
+    border: 5px solid #a70303;
+    box-shadow: 0 12px 30px -20px rgba(255, 140, 60, .15);        /* valfritt: lite ljusare kant */
+  }
+
+  /* (valfritt) liten hover-effekt */
+  .card.project:hover{
+    filter:brightness(1.2);
+  }
+
+
+
   /* New hero layout (applies when section has both .hero and .card) */
   .hero.card{
     padding:24px;
@@ -167,9 +181,75 @@
   padding:8px 12px;
   border:1px solid #212121;
   background:#0d0d0d;
-  border-ra<dius:999px;
+  border-radius:999px;
   text-wrap:nowrap;
 }
+/* === Accent system (enhetlig röd) === */
+:root{
+  --accent: #e11d48;                    /* primär röd */
+  --accent-weak: rgba(225,29,72,.12);   /* svag bakgrund */
+  --accent-ring: rgba(225,29,72,.35);   /* ring/skugga */
+  --accent-border: rgba(225,29,72,.45); /* kantnyans */
+}
+
+/* Länkar & hover */
+a { color: var(--txt); text-decoration: none; }
+a:hover {
+  color:#fff;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+/* Knappar */
+.btn.primary, .btn-primary{
+  background: var(--accent-weak);
+  border-color: var(--accent-border);
+  color:#fff;
+  box-shadow: 0 0 0 1px rgba(225,29,72,.18) inset, 0 0 0 0 var(--accent-ring);
+}
+.btn.primary:hover, .btn-primary:hover{ filter: brightness(1.06); }
+
+/* Aktiva filterchips */
+.chip[data-active="true"]{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+  background: var(--accent-weak);
+}
+
+/* Projektkorten (grid) – subtil röd ton och tydligare kant) */
+.card.project{
+  background: linear-gradient(180deg, #131012, #0f0d0e);
+  border-color: rgba(225,29,72,.22);
+  box-shadow: 0 12px 30px -20px rgba(225,29,72,.18);
+}
+.card.project:hover{ filter: brightness(1.04); }
+
+/* Taggar – liten accentkant */
+.tag{
+  border-color: rgba(225,29,72,.22);
+  background: rgba(225,29,72,.06);
+}
+
+/* Divider använder accent som mittpunkt */
+.divider{
+  background: linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:.25;
+}
+
+/* Fokus (a11y) – snygg röd ring överallt */
+:where(a,button,input,.chip,.btn):focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-ring);
+  border-color: var(--accent);
+}
+
+/* Hero-loggan får samma accent (du har redan gradient, denna förstärker) */
+.logo{ box-shadow: 0 0 0 2px rgba(255,255,255,.04), 0 10px 30px -10px var(--accent-ring); }
+
+/* Val: markering av text */
+::selection{ background: var(--accent); color: #fff; }
 </style>
 </head>
 <body>
@@ -314,11 +394,11 @@
       ]
     },
     {
-      "title":"Design — GitHub Pages Dark Refresh",
-      "summary":"Mörkt tema, typografi, grid. Dokumenterade designval och tillgänglighet.",
+      "title":"My old Portfolio",
+      "summary":"Created this webpage as a portfolio for my artsy and creative side.",
       "tags":["Design"],
       "links":[
-        {"label":"Live","href":"https://twtct80.github.io"}
+        {"label":"Visit","href":"https://twtct80.github.io/old-portfolio"}
       ]
     }
   ]</script>
