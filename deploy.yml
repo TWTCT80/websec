@@ -1,0 +1,27 @@
+name: Deploy to user site
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout websec
+        uses: actions/checkout@v4
+
+      # Extra för SPA/djupa länkar – skadar inte om du inte behöver det
+      - name: Add 404 fallback and disable Jekyll
+        run: |
+          [ -f index.html ] && cp index.html 404.html || true
+          touch .nojekyll
+
+      - name: Deploy to twtct80.github.io
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main
+          folder: .
+          repository-name: TWTCT80/twtct80.github.io
+          token: ${{ secrets.GH_PAGES_TOKEN }}
+          clean: true
